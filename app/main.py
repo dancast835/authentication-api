@@ -13,12 +13,15 @@ async def lifespan(app: FastAPI):
     yield
 
 
-
 app = FastAPI(
     title="Authentication API",
     version="1.0.0",
     description="Phase 1 authentication backend using FastAPI, SQLModel, and JWT",
     lifespan=lifespan
 )
+
+@app.get("/health")
+def health():
+    return {"status": "healthy"}
 
 app.include_router(router)

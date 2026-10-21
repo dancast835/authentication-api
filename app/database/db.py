@@ -9,24 +9,23 @@ class UserData(SQLModel, table=True):
     email: str = Field(nullable=False, unique=True)
     password_hash: str = Field(nullable=False)
 
-postgre_url = DATABASE_URL
-
-def get_engine():    
-    return create_engine(postgre_url, echo=True)
 
 
+engine = create_engine(
+    DATABASE_URL,
+    echo=True,
+    pool_pre_ping=True,
+)
 
 #------------------------------------------- Database functions  --------------------------------------------------#
 #this should be program to only create the table if it doesn't exist
 def create_db_and_tables():
-    engine = get_engine()
     SQLModel.metadata.create_all(engine)
 
 #session
 ##avoids connection leaks
 ##sessions are open and closed properly
 def get_session():
-    engine = get_engine()
     with Session(engine) as session:
         yield session
         
