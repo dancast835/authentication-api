@@ -1,4 +1,5 @@
 from fastapi import FastAPI
+from fastapi.responses import RedirectResponse
 from contextlib import asynccontextmanager
 
 from app.database.db import create_db_and_tables
@@ -19,6 +20,10 @@ app = FastAPI(
     description="Phase 1 authentication backend using FastAPI, SQLModel, and JWT",
     lifespan=lifespan
 )
+
+@app.get("/", include_in_schema=False)
+def root():
+    return RedirectResponse(url="/docs")
 
 @app.get("/health")
 def health():
