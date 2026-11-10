@@ -7,6 +7,14 @@ The project emphasizes backend architecture, security practices, database integr
 
 ---
 
+## Live API Documentation
+
+The Authentication API is deployed on Render.
+
+- **Swagger UI:** https://authentication-api-7mz6.onrender.com/docs
+- **Base URL:** https://authentication-api-7mz6.onrender.com
+- **Health Check:** https://authentication-api-7mz6.onrender.com/health
+
 ## Core features (Phase 1 – MVP)
 
 - User registration with secure password hashing
@@ -62,7 +70,7 @@ authentication-api/
 
 1. Clone the repository
 ```bash
-git clone https://github.com/yourusername/authentication-api.git
+git clone https://github.com/dancast835/authentication-api.git
 cd authentication-api
 
 2. Create and activate a virtual environment
@@ -71,10 +79,6 @@ source venv/bin/activate   # Windows: venv\Scripts\activate
 
 3. Install dependencies
 pip install -r requirements.txt
-
-API credentials are required to run the application.
-They can be obtained from the Edamam Developer Portal:
-https://developer.edamam.com
 
 4. Create a .env file
 DATABASE_URL=your_database_url
